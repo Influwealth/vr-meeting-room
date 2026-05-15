@@ -1,0 +1,16 @@
+{
+  "id": "VRMeetingRoomCapsule",
+  "type": "sovereign-interface-capsule",
+  "runtime": ["webxr", "unity", "icp-canister"],
+  "description": "Oculus Meeting Room Social Capsule (VR Pitch Room) with product pods, simulations, and multilingual routing.",
+  "integrations": [
+    "wealthbridge_os",
+    "infraflow_qnet",
+    "meshvault",
+    "qassist",
+    "bitmesh_chat",
+    "icp_identity",
+    "observability"
+  ]
+}
+
