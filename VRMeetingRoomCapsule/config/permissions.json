@@ -1,0 +1,15 @@
+{
+  "roles": {
+    "host": {
+      "can_invite": true,
+      "can_present": true,
+      "can_deploy_capsules": true
+    },
+    "participant": {
+      "can_invite": false,
+      "can_present": false,
+      "can_deploy_capsules": false
+    }
+  }
+}
+
