@@ -1,0 +1,14 @@
+{
+  "priority": {
+    "ui_core": ["en", "fr", "pt", "ar", "sw", "ha", "yo", "ig", "am", "zu"],
+    "fallback_chain": ["local", "regional", "en"]
+  },
+  "families": {
+    "niger_congo": ["sw", "yo", "ig", "zu", "xh", "rw", "lg", "ak", "ln", "ny"],
+    "afroasiatic": ["ar", "am", "so", "ti", "om", "ha"],
+    "nilo_saharan": ["luo", "maasai", "din", "kanuri"],
+    "khoisan": ["kho"],
+    "indo_european": ["en", "fr", "pt", "af"]
+  }
+}
+
