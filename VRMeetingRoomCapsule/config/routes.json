@@ -1,0 +1,12 @@
+{
+  "endpoints": {
+    "getProductCatalog": "/api/catalog",
+    "getCapsuleState": "/api/capsule/state",
+    "runSimulation": "/api/sim/run",
+    "getAuditTrail": "/api/audit",
+    "deployCapsule": "/api/capsule/deploy",
+    "joinMeeting": "/api/meeting/join",
+    "spawnVRObject": "/api/vr/spawn"
+  }
+}
+
