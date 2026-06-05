@@ -1,116 +1,61 @@
-# VR Meeting Room — Sovereign OS / WealthBridge OS Capsule
-### Immersive VR Pitch Room • Product Walkthrough Hall • Multi-Language Africa Engine • ICP-Powered Backend
+# VR Meeting Room
 
-The **VR Meeting Room Capsule** is a sovereign, Oculus-ready, WebXR-enabled virtual environment designed for business meetings, pitch decks, product walkthroughs, and interactive simulations.
-It integrates directly with **WealthBridge OS**, **Sovereign OS**, and **ICP canisters**, enabling real-time data, agent interactions, and multi-language support for 2,000+ African languages.
+Immersive virtual meeting room for the Influwealth Sovereign Automation System.
+Supports 2D web, 3D WebVR (A-Frame), and full VR via NVIDIA CloudXR streaming.
 
 ## Features
 
-### 1. Immersive VR Meeting Room
-- Holographic table
-- Multi-user avatars + spatial audio
-- Live pitch deck viewer (PDF, Slides, Video)
-- Multi-window browser support
-- Presenter mode + laser pointer
-
-### 2. Product Walkthrough Hall
-Each WealthBridge capsule appears as an interactive 3D pod:
-- Business Registry Capsule
-- Unit Capsule (BRICS trade currency)
-- Rewards Capsule
-- Tradeline Capsule
-- Metabolic Modeling Capsule
-- Smart City Capsule
-- Quantum Internet / NVQLink Pod
-- Dames Legacy Accounts Pod
-- And more...
-
-Each pod supports:
-- Live data from WealthBridge OS
-- Run Simulation
-- Show Audit Trail
-- Deploy Capsule
-
-### 3. Sandbox Simulation Room
-- Economic simulations
-- Metabolic networks
-- Smart city models
-- Quantum flows
-- Agent orchestration demos
-
-### 4. African Multi-Language Engine (2,000+ languages)
-
-Components:
-- `lang_detect.mo` - language detection (text + voice)
-- `locale_store.mo` - per-user + per-room language preferences
-- `translation_bridge.mo` - sovereign translation + generation bridge
-- `lang_agent.py` - presenter + QAssist language routing
-- `languages.json` - language families + fallback chains
-
-UX:
-- Auto-detect user language from voice
-- UI + subtitles localized
-- Host can set room language
-- Users can override individually
+- **Multi-room management** — Create, join, and manage meeting rooms
+- **WebRTC video/audio** — Peer-to-peer real-time communication
+- **3D WebVR** — A-Frame powered 3D meeting space in any browser
+- **NVIDIA CloudXR** — Full VR headset streaming (requires NVIDIA GPU server)
+- **AI Meeting Assistant** — NIM-powered note-taking, summaries, and Q&A
+- **World Themes** — Rooms themed after World Interactive Origins worlds
+- **SAP Integration** — Sovereign Agent Protocol for distributed tracing
 
 ## Architecture
 
-```text
-/VRMeetingRoomCapsule
-  /frontend
-    /unity
-      Scenes/
-        MeetingRoom.unity
-        ProductHall.unity
-        Sandbox.unity
-      Scripts/
-        VRRoomManager.cs
-        ProductPodController.cs
-        PitchDeckController.cs
-        AvatarManager.cs
-        LangRouterClient.cs
-        VoiceCommandClient.cs
-    /webxr
-      src/
-        index.tsx
-        LangRouterClient.ts
-  /backend
-    /canister
-      main.mo
-      api.mo
-      auth.mo
-      state.mo
-      lang_detect.mo
-      locale_store.mo
-      translation_bridge.mo
-    /integrations
-      wealthbridge_api.mo
-      qassist_api.mo
-      meshvault_api.mo
-      observability_api.mo
-  /agents
-    presenter_agent.py
-    simulation_agent.py
-    catalog_agent.py
-    lang_agent.py
-  /config
-    capsule.json
-    permissions.json
-    routes.json
-    languages.json
+```
+Browser / VR Headset
+    ↓ WebRTC / HTTPS
+VR Meeting Server (port 7791)
+    ├── Room Manager     — Room state, participants, sessions
+    ├── NIM Assistant    — AI note-taking via NVIDIA NIM
+    ├── CloudXR Bridge   — NVIDIA CloudXR VR streaming
+    └── A-Frame Static   — WebVR client (served at /room/<id>)
 ```
 
-## Deployment (Scaffold)
+## SAP Integration
+- **SAP Node ID**: `vr-meeting-room`
+- **Port**: 7791
+- **Managed by**: DeepFlex Supervisor (port 8000)
 
-This repository is scaffold-only and dependency-free by design.
+## Quick Start
 
-Typical deployment pipeline (to be implemented in later phases):
-1. Build Unity client (Oculus/WebXR)
-2. Upload assets to MeshVault
-3. Deploy canisters (`dfx deploy`)
-4. Register capsule in WealthBridge OS
-5. Enable Observability + QAssist
+```bash
+pip install -r requirements.txt
+cp .env.example .env  # add NVIDIA_API_KEY
+uvicorn server:app --port 7791 --reload
+```
 
-## License
+Open http://localhost:7791 to create a meeting room.
 
-TBD.
+## Room Themes
+
+| Theme | World | Best For |
+|-------|-------|----------|
+| `boardroom` | Modern | Business meetings |
+| `silk-road` | Ancient Silk Road | History education |
+| `harlem-jazz` | Harlem Renaissance | Arts education |
+| `brooklyn-90s` | Brooklyn 1990s | Community sessions |
+| `space-station` | Future | Science & STEM |
+| `community-center` | East Flatbush | Local org meetings |
+
+## Environment Variables
+
+```bash
+NVIDIA_API_KEY=nvapi-...        # For NIM AI assistant
+CLOUDXR_SERVER_URL=...          # NVIDIA CloudXR server (optional)
+VR_ROOM_PORT=7791               # HTTP server port
+DEEPFLEX_BASE_URL=http://localhost:8000
+```
